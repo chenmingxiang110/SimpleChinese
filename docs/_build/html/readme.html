@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleChinese &#8212; SimpleChinese 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to SimpleChinese’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="simplechinese">
+<h1>SimpleChinese<a class="headerlink" href="#simplechinese" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/simplechinese"><img alt="https://img.shields.io/pypi/v/simplechinese.svg" src="https://img.shields.io/pypi/v/simplechinese.svg" /></a>
+<a class="reference external image-reference" href="https://travis-ci.com/chenmingxiang110/simplechinese"><img alt="https://img.shields.io/travis/chenmingxiang110/simplechinese.svg" src="https://img.shields.io/travis/chenmingxiang110/simplechinese.svg" /></a>
+<a class="reference external image-reference" href="https://simplechinese.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/simplechinese/badge/?version=latest" /></a>
+<a class="reference external image-reference" href="https://pyup.io/repos/github/chenmingxiang110/simplechinese/"><img alt="Updates" src="https://pyup.io/repos/github/chenmingxiang110/simplechinese/shield.svg" /></a>
+<p>Chinese text processing, representation, and visualization.</p>
+<ul class="simple">
+<li><p>Free software: MIT license</p></li>
+<li><p>Documentation: <a class="reference external" href="https://simplechinese.readthedocs.io">https://simplechinese.readthedocs.io</a>.</p></li>
+</ul>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="0">
+<li><p>Read the data from a csv file.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/raw.png"><img alt="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/raw.png" src="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/raw.png" style="height: 400px;" /></a>
+<ol class="arabic simple">
+<li><p>Clean the data.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/clean.png"><img alt="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/clean.png" src="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/clean.png" style="height: 400px;" /></a>
+<p>The clean function does the following:</p>
+<p>fillna(): Fill the N/As in a pandas.DataFrame with an empty string.</p>
+<p>toLower(): Transform alphabets to their lowercases.</p>
+<p>remove_punctuations(): Remove all the punctuations in a string or a pandas.DataFrame.</p>
+<p>remove_space(): Remove all the spaces in a string or a pandas.DataFrame.</p>
+<ol class="arabic simple" start="2">
+<li><p>Extract words from the data</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">extract_words</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/extract_words.png"><img alt="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/extract_words.png" src="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/extract_words.png" style="height: 400px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>Vectorization</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">tfidf</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/vectorization.png"><img alt="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/vectorization.png" src="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/vectorization.png" style="height: 400px;" /></a>
+<ol class="arabic simple" start="4">
+<li><p>Word cloud</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">wordcloud</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">font_path</span><span class="o">=</span><span class="s2">&quot;yahei.ttc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/wordcloud.png"><img alt="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/wordcloud.png" src="https://github.com/chenmingxiang110/SimpleChinese/raw/master/pics/wordcloud.png" style="height: 400px;" /></a>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This package was created with <a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> and the <a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">audreyr/cookiecutter-pypackage</a> project template.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SimpleChinese</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SimpleChinese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">simplechinese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to SimpleChinese’s documentation!</a></li>
+      <li>Next: <a href="installation.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Mingxiang Chen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/readme.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

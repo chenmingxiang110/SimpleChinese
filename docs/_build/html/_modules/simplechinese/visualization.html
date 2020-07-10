@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simplechinese.visualization &#8212; SimpleChinese 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for simplechinese.visualization</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span> <span class="k">as</span> <span class="n">lsg</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">.nlp</span> <span class="kn">import</span> <span class="n">extract_words</span>
+
+<div class="viewcode-block" id="wordcloud"><a class="viewcode-back" href="../../simplechinese.html#simplechinese.visualization.wordcloud">[docs]</a><span class="k">def</span> <span class="nf">wordcloud</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+    <span class="n">font_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="n">height</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="n">max_words</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">contour_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">contour_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">background_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">relative_scaling</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">return_figure</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">extract_words</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">colormap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="c1"># Custom palette.</span>
+        <span class="c1"># TODO move it under tools.</span>
+        <span class="n">corn</span> <span class="o">=</span> <span class="p">(</span><span class="mf">255.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">242.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">117.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">mango_tango</span> <span class="o">=</span> <span class="p">(</span><span class="mf">255.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">140.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">66.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">crayola</span> <span class="o">=</span> <span class="p">(</span><span class="mf">63.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">136.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">197.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">crimson</span> <span class="o">=</span> <span class="p">(</span><span class="mf">215.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">38.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">61.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">oxford_blue</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">24.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">,</span> <span class="mf">43.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+
+        <span class="n">texthero_cm</span> <span class="o">=</span> <span class="n">lsg</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span>
+            <span class="s2">&quot;texthero&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">corn</span><span class="p">,</span> <span class="n">mango_tango</span><span class="p">,</span> <span class="n">crayola</span><span class="p">,</span> <span class="n">crimson</span><span class="p">,</span> <span class="n">oxford_blue</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">colormap</span> <span class="o">=</span> <span class="n">texthero_cm</span>
+
+    <span class="n">words</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span>
+        <span class="n">font_path</span><span class="o">=</span><span class="n">font_path</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span>
+        <span class="n">max_words</span><span class="o">=</span><span class="n">max_words</span><span class="p">,</span>
+        <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+        <span class="n">contour_width</span><span class="o">=</span><span class="n">contour_width</span><span class="p">,</span>
+        <span class="n">contour_color</span><span class="o">=</span><span class="n">contour_color</span><span class="p">,</span>
+        <span class="n">background_color</span><span class="o">=</span><span class="n">background_color</span><span class="p">,</span>
+        <span class="n">relative_scaling</span><span class="o">=</span><span class="n">relative_scaling</span><span class="p">,</span>
+        <span class="n">colormap</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span>
+        <span class="c1"># stopwords=[],  # TODO. Will use generate from frequencies.</span>
+        <span class="c1"># normalize_plurals=False,  # TODO.</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)))</span>
+
+    <span class="c1"># fig = px.imshow(wordcloud)</span>
+    <span class="c1"># fig.show()</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;bilinear&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">return_figure</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fig</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">SimpleChinese</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">SimpleChinese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">simplechinese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Mingxiang Chen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simplechinese package &#8212; SimpleChinese 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="simplechinese" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="simplechinese-package">
+<h1>simplechinese package<a class="headerlink" href="#simplechinese-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simplechinese.nlp">
+<span id="simplechinese-nlp-module"></span><h2>simplechinese.nlp module<a class="headerlink" href="#module-simplechinese.nlp" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="simplechinese.nlp.extract_nouns">
+<code class="sig-prename descclassname">simplechinese.nlp.</code><code class="sig-name descname">extract_nouns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">isList</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">split_mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">extract_mode</span><span class="o">=</span><span class="default_value">'all'</span></em>, <em class="sig-param"><span class="n">token</span><span class="o">=</span><span class="default_value">'/'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/nlp.html#extract_nouns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.nlp.extract_nouns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the nouns from a string, a pandas.Series, or a pandas.DataFrame. This function is still under developing.</p>
+<dl>
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string, a pandas.Series, or a pandas.DataFrame.</p>
+<p>isList: A boolean. If it is True, the returned value would be a list/lists, or it would be a string/strings of nouns seperated by the token.</p>
+<p>token: The token to seperate words if isList is False.</p>
+<dl class="simple">
+<dt>mode: 0: No single character words. The words may be overlapped.</dt><dd><p>1: Have single character words. The words may be overlapped.
+2: No single character words. The words are not overlapped.
+3: Have single character words. The words are not overlapped.
+4: Only single characters.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>The seperated nouns in the input data.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.nlp.extract_nums">
+<code class="sig-prename descclassname">simplechinese.nlp.</code><code class="sig-name descname">extract_nums</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">isList=False</em>, <em class="sig-param">dtype=&lt;class 'float'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/nlp.html#extract_nums"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.nlp.extract_nums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the numbers from a string, a pandas.Series, or a pandas.DataFrame.</p>
+<dl>
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string, a pandas.Series, or a pandas.DataFrame.</p>
+<p>isList: A boolean. If it is True, the returned value would be a list/lists of floats, or it would be a string/strings of numbers seperated by spaces.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The numbers in the input data.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.nlp.extract_words">
+<code class="sig-prename descclassname">simplechinese.nlp.</code><code class="sig-name descname">extract_words</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">isList</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">token</span><span class="o">=</span><span class="default_value">'/'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/nlp.html#extract_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.nlp.extract_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the words from a string, a pandas.Series, or a pandas.DataFrame.</p>
+<dl>
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string, a pandas.Series, or a pandas.DataFrame.</p>
+<p>isList: A boolean. If it is True, the returned value would be a list/lists, or it would be a string/strings of words seperated by the token.</p>
+<p>token: The token to seperate words if isList is False.</p>
+<dl class="simple">
+<dt>mode: 0: No single character words. The words may be overlapped.</dt><dd><p>1: Have single character words. The words may be overlapped.
+2: No single character words. The words are not overlapped.
+3: Have single character words. The words are not overlapped.
+4: Only single characters.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>The seperated words in the input data.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simplechinese.preprocessing">
+<span id="simplechinese-preprocessing-module"></span><h2>simplechinese.preprocessing module<a class="headerlink" href="#module-simplechinese.preprocessing" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="simplechinese.preprocessing.clean">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#clean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function does the following:</p>
+<ol class="arabic simple">
+<li><p>fillna(): Fill the N/As in a pandas.DataFrame with an empty string.</p></li>
+<li><p>toLower(): Transform alphabets to their lowercases.</p></li>
+<li><p>remove_punctuations(): Remove all the punctuations in a string or a pandas.DataFrame.</p></li>
+<li><p>remove_space(): Remove all the spaces in a string or a pandas.DataFrame.</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.fillna">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">fillna</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#fillna"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.fillna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill the N/As in a pandas.DataFrame with an empty string.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: A pandas.DataFrame content to be parsed.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A pandas.DataFrame without N/As, which are substituted with empty strings.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.only_digits">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">only_digits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#only_digits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.only_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only keeps the digits in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame only includes digits.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.only_en">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">only_en</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#only_en"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.only_en" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only keeps English alphabets in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame only includes English alphabets.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.only_zh">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">only_zh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#only_zh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.only_zh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only keeps Chinese characters in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame only includes Chinese characters.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.remove_digits">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">remove_digits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#remove_digits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.remove_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all the digits in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame without digits.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.remove_en">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">remove_en</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#remove_en"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.remove_en" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all the English alphabets in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame without English alphabets.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.remove_punctuations">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">remove_punctuations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#remove_punctuations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.remove_punctuations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all the punctuations in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame without punctuations.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.remove_space">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">remove_space</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#remove_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.remove_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all the spaces in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame without spaces.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.remove_zh">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">remove_zh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#remove_zh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.remove_zh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all the Chinese characters in a string or a pandas.DataFrame.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame without Chinese characters.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.toLower">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">toLower</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#toLower"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.toLower" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform alphabets to their lowercases.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame where the alphabets are in lowercases.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.preprocessing.toUpper">
+<code class="sig-prename descclassname">simplechinese.preprocessing.</code><code class="sig-name descname">toUpper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/preprocessing.html#toUpper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.preprocessing.toUpper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform alphabets to their uppercases.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x: The content to be parsed. Either a string or a pandas.DataFrame.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new string or a pandas.DataFrame where the alphabets are in uppercases.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simplechinese.representation">
+<span id="simplechinese-representation-module"></span><h2>simplechinese.representation module<a class="headerlink" href="#module-simplechinese.representation" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="simplechinese.representation.nmf">
+<code class="sig-prename descclassname">simplechinese.representation.</code><code class="sig-name descname">nmf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">n_components</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/representation.html#nmf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.representation.nmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform dimension reduction with the non-negative matrix factorization algorithm. The input data should be a pandas.Series of vectors.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.representation.pca">
+<code class="sig-prename descclassname">simplechinese.representation.</code><code class="sig-name descname">pca</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">n_components</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/representation.html#pca"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.representation.pca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform dimension reduction with the principal component analysis algorithm. The input data should be a pandas.Series of vectors.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.representation.term_frequency">
+<code class="sig-prename descclassname">simplechinese.representation.</code><code class="sig-name descname">term_frequency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">max_features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">return_feature_names</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/representation.html#term_frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.representation.term_frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the words and vectorize each element in the pandas.Series by the frequency of each word.</p>
+<dl>
+<dt>Args:</dt><dd><p>x: The pandas.Series to be parsed.</p>
+<p>max_features: The maximum number of features</p>
+<p>return_feature_names: Return the token words or not.</p>
+<dl class="simple">
+<dt>mode: 0: No single character words. The words may be overlapped.</dt><dd><p>1: Have single character words. The words may be overlapped.
+2: No single character words. The words are not overlapped.
+3: Have single character words. The words are not overlapped.
+4: Only single characters.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>The vectorization result.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simplechinese.representation.tfidf">
+<code class="sig-prename descclassname">simplechinese.representation.</code><code class="sig-name descname">tfidf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">max_features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">min_df</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">return_feature_names</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/representation.html#tfidf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.representation.tfidf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the words and vectorize each element in the pandas.Series by the tfidf scores.</p>
+<dl>
+<dt>Args:</dt><dd><p>x: The pandas.Series to be parsed.</p>
+<p>max_features: The maximum number of features</p>
+<p>return_feature_names: Return the token words or not.</p>
+<dl class="simple">
+<dt>mode: 0: No single character words. The words may be overlapped.</dt><dd><p>1: Have single character words. The words may be overlapped.
+2: No single character words. The words are not overlapped.
+3: Have single character words. The words are not overlapped.
+4: Only single characters.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>The vectorization result.</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simplechinese.visualization">
+<span id="simplechinese-visualization-module"></span><h2>simplechinese.visualization module<a class="headerlink" href="#module-simplechinese.visualization" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="simplechinese.visualization.wordcloud">
+<code class="sig-prename descclassname">simplechinese.visualization.</code><code class="sig-name descname">wordcloud</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">pandas.core.series.Series</span></em>, <em class="sig-param"><span class="n">font_path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">400</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">200</span></em>, <em class="sig-param"><span class="n">max_words</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">mask</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">contour_width</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">contour_color</span><span class="o">=</span><span class="default_value">'white'</span></em>, <em class="sig-param"><span class="n">background_color</span><span class="o">=</span><span class="default_value">'white'</span></em>, <em class="sig-param"><span class="n">relative_scaling</span><span class="o">=</span><span class="default_value">'auto'</span></em>, <em class="sig-param"><span class="n">colormap</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">return_figure</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplechinese/visualization.html#wordcloud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplechinese.visualization.wordcloud" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simplechinese">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simplechinese" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SimpleChinese</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">SimpleChinese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">simplechinese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">simplechinese</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">simplechinese</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Mingxiang Chen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/simplechinese.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
