@@ -10,4 +10,7 @@ from .visualization import *
 from . import nlp
 from .nlp import *
 
+from . import conversion
+from .conversion import *
+
 __version__ = "0.1.0"
