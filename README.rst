@@ -23,6 +23,9 @@ SimpleChinese
 Chinese text processing, representation, and visualization.
 
 
+This package integrates many basic Chinese NLP functions, making Python-based Chinese word processing and information extraction simple and convenient.
+
+
 * Free software: MIT license
 * Documentation: https://simplechinese.readthedocs.io.
 
