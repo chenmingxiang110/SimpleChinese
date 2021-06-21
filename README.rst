@@ -3,9 +3,9 @@ SimpleChinese
 =============
 
 This project is DEPRECATED. See 2nd edition at: `SimpleChinese2`.
+.. _SimpleChinese2: https://github.com/chenmingxiang110/SimpleChinese2
 --------
 
-.. _SimpleChinese2: https://github.com/chenmingxiang110/SimpleChinese2
 
 
 .. image:: https://img.shields.io/pypi/v/simplechinese.svg
