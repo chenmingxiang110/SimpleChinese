@@ -2,6 +2,9 @@
 SimpleChinese
 =============
 
+This project is DEPRECATED. See 2nd edition at: https://github.com/chenmingxiang110/SimpleChinese
+--------
+
 
 .. image:: https://img.shields.io/pypi/v/simplechinese.svg
         :target: https://pypi.python.org/pypi/simplechinese
