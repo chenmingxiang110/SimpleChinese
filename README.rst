@@ -3,7 +3,6 @@ SimpleChinese
 =============
 
 .. raw:: html
-
         <font color="blue"> This project is DEPRECATED. See 2nd edition at: `SimpleChinese2`_. <\font>
 
 --------
