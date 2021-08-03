@@ -1,11 +1,8 @@
 =============
 SimpleChinese
 =============
-
-.. raw:: html
-        <font color="blue"> This project is DEPRECATED. See 2nd edition at: `SimpleChinese2`_. <\font>
-
---------
+This project is DEPRECATED. See 2nd edition at: `SimpleChinese2`_.
+=============
 .. _SimpleChinese2: https://github.com/chenmingxiang110/SimpleChinese2
 
 
